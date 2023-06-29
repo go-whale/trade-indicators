@@ -20,6 +20,11 @@ SMA = (Price(1) + Price(2) + ... + Price(n)) / N
 
 EMAs are commonly used in conjunction with other indicators to confirm significant market moves and to gauge their validity. For traders who trade intraday and fast-moving markets, the EMA is more applicable. Quite often, traders use EMAs to determine a trading bias. If an EMA on a daily chart shows a strong upward trend, an intraday trader’s strategy may be to trade only on the long side.
 
+## MACD:
+The Moving Average Convergence Divergence (MACD) is one of the most popular technical indicators used to generate signals among stock traders. This indicator serves as a momentum indicator that can help signal shifts in market momentum and help signal potential breakouts.
+
+The MACD is calculated by subtracting the 26-period exponential moving average from the 12-period moving average. The nine-period exponential moving average of the MACD line is used as the "signal" line.
+
 ## Volatility:
 
 The term “volatility” refers to the statistical measure of the dispersion of returns during a certain period of time for stocks, security, or market index. The volatility can be calculated either using the standard deviation or the variance of the security or stock.

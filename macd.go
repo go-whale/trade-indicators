@@ -3,7 +3,6 @@ package trade_indicators
 import (
 	"errors"
 	"fmt"
-	"math"
 )
 
 const macdFastPeriod = 12
@@ -26,11 +25,13 @@ func CalculateMACD(prices []float64) (macd []float64, signal []float64, err erro
 		return nil, nil, fmt.Errorf("can't calculate ema12: %w", err)
 	}
 
+	roundPrecision := detectPrecision(ema12[0])
+
 	ema12 = ema12[len(ema12)-len(ema26):]
 
 	macd = make([]float64, 0)
 	for i := 0; i < len(ema26); i++ {
-		macd = append(macd, math.Round((ema12[i]-ema26[i])*100)/100)
+		macd = append(macd, roundFloat(ema12[i]-ema26[i], roundPrecision))
 	}
 
 	signal, err = CalculateEMA(macd, signalPeriod)

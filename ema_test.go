@@ -29,6 +29,18 @@ func TestCalculateEMA(t *testing.T) {
 			},
 		},
 		{
+			name: "correct small price round",
+			args: args{
+				prices: []float64{
+					0.00078, 0.00079, 0.00078, 0.00081, 0.00082, 0.00081, 0.00079, 0.00078, 0.00076, 0.00073, 0.00071,
+				},
+				period: 4,
+			},
+			want: func() ([]float64, error) {
+				return []float64{0.00079, 0.000802, 0.000805, 0.000799, 0.000791, 0.000779, 0.000759, 0.000739}, nil
+			},
+		},
+		{
 			name: "err",
 			args: args{
 				prices: []float64{

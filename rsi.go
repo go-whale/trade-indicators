@@ -5,6 +5,7 @@ import (
 	"math"
 )
 
+// CalculateRSI Calculate RSI for period
 func CalculateRSI(prices []float64, period int) ([]float64, error) {
 	if len(prices) < (2*period + 1) {
 		return nil, errors.New("prices len must be more or equal 2 periods +1")

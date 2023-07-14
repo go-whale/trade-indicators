@@ -2,20 +2,28 @@
 
 # Trading indicators
 
-Note: this is beta version 
-Top trading indicators for go projects
+Top trading indicators for golang projects
+
+Technical indicators are mathematically based calculations used by traders to analyze financial markets — including cryptocurrencies — and make informed trading decisions. Past prices and volume data and are used to identify trends, patterns and potential price movements in the market.
+
+## SMA (Simple Moving Average):
+
+A simple moving average (SMA) calculates the average of a selected range of prices, usually closing prices, by the number of periods in that range.
+Moving averages are an important analytical tool used to identify current price trends and the potential for a change in an established trend. The simplest use of an SMA in technical analysis is using it to quickly determine if an asset is in an uptrend or downtrend.
+
+SMA (n) = (P1 + P2 + … + Pn) / n
 
 ## EMA (Exponential Moving Average):
 
 EMA = Price(t) * k + EMA(y) * (1 − k)
 
-where:
-t=today
-y=yesterday
-N=number of days in EMA
+where:  
+t=today  
+y=yesterday  
+N=number of days in EMA  
 k = 2 / (N+1)
 
-and for the first EMA(y) we need calculate SMA:
+and for the first EMA(y) we need calculate SMA:  
 SMA = (Price(1) + Price(2) + ... + Price(n)) / N
 
 EMAs are commonly used in conjunction with other indicators to confirm significant market moves and to gauge their validity. For traders who trade intraday and fast-moving markets, the EMA is more applicable. Quite often, traders use EMAs to determine a trading bias. If an EMA on a daily chart shows a strong upward trend, an intraday trader’s strategy may be to trade only on the long side.

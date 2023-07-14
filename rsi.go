@@ -32,7 +32,7 @@ func CalculateRSI(prices []float64, period int) ([]float64, error) {
 		previousPrice = currentPrice
 	}
 
-	var avgGains, avgLoses []float64 // средние значения по убытку и профиту
+	var avgGains, avgLoses []float64
 	var previousAvgGain, previousAvgLose float64
 	for _, g := range gains[:period] {
 		previousAvgGain = previousAvgGain + g

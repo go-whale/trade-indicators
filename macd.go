@@ -15,15 +15,8 @@ func CalculateMACD(prices []float64) (macd []float64, signal []float64, err erro
 		return nil, nil, errors.New("prices len must be more or equal 2 periods")
 	}
 
-	ema26, err := CalculateEMA(prices, macdSlowPeriod)
-	if err != nil {
-		return nil, nil, fmt.Errorf("can't calculate ema12: %w", err)
-	}
-
-	ema12, err := CalculateEMA(prices, macdFastPeriod)
-	if err != nil {
-		return nil, nil, fmt.Errorf("can't calculate ema12: %w", err)
-	}
+	ema26, _ := CalculateEMA(prices, macdSlowPeriod)
+	ema12, _ := CalculateEMA(prices, macdFastPeriod)
 
 	roundPrecision := detectPrecision(ema12[0])
 

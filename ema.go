@@ -2,6 +2,7 @@ package trade_indicators
 
 import (
 	"errors"
+	"fmt"
 )
 
 func CalculateEMA(prices []float64, period int) ([]float64, error) {
@@ -10,15 +11,16 @@ func CalculateEMA(prices []float64, period int) ([]float64, error) {
 	}
 
 	var emas []float64
-	// first ema value = sma value
-	var sumPrices float64
-	for _, p := range prices[:period] {
-		sumPrices += p
-	}
 
 	roundPrecision := detectPrecision(prices[0])
+	// first ema value = sma value
+	sma, err := CalculateSMA(prices[:period], period)
+	if err != nil {
+		return nil, fmt.Errorf("can't calculate sma: %w", err)
+	}
 
-	previousEma := sumPrices / float64(period)
+	previousEma := sma[0]
+
 	emas = append(emas, roundFloat(previousEma, roundPrecision))
 
 	k := 2 / float64(1+period)

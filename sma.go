@@ -8,6 +8,8 @@ func CalculateSMA(prices []float64, period int) ([]float64, error) {
 		return nil, errors.New("prices len must be equal to period")
 	}
 
+	roundPrecision := detectPrecision(prices[0])
+
 	var sma []float64
 	for i := 0; i+period <= len(prices); i++ {
 		var sum float64
@@ -15,7 +17,7 @@ func CalculateSMA(prices []float64, period int) ([]float64, error) {
 			sum += p
 		}
 
-		sma = append(sma, sum/float64(period))
+		sma = append(sma, roundFloat(sum/float64(period), roundPrecision))
 	}
 
 	return sma, nil

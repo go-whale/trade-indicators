@@ -10,21 +10,23 @@ Technical indicators are mathematically based calculations used by traders to an
 
 A simple moving average (SMA) calculates the average of a selected range of prices, usually closing prices, by the number of periods in that range.
 Moving averages are an important analytical tool used to identify current price trends and the potential for a change in an established trend. The simplest use of an SMA in technical analysis is using it to quickly determine if an asset is in an uptrend or downtrend.
-
+````
 SMA (n) = (P1 + P2 + … + Pn) / n
-
+````
 ## EMA (Exponential Moving Average):
-
+````
 EMA = Price(t) * k + EMA(y) * (1 − k)
 
-where:  
-t=today  
-y=yesterday  
-N=number of days in EMA  
-k = 2 / (N+1)
+where 
 
-and for the first EMA(y) we need calculate SMA:  
+t=today, y=yesterday, N=number of days in EMA  
+k = 2 / (N+1)
+````
+
+and for the first EMA(y) we need calculate SMA: 
+````
 SMA = (Price(1) + Price(2) + ... + Price(n)) / N
+````
 
 EMAs are commonly used in conjunction with other indicators to confirm significant market moves and to gauge their validity. For traders who trade intraday and fast-moving markets, the EMA is more applicable. Quite often, traders use EMAs to determine a trading bias. If an EMA on a daily chart shows a strong upward trend, an intraday trader’s strategy may be to trade only on the long side.
 
@@ -45,7 +47,20 @@ Daily Volatility Formula is represented as Volatility = sqrt(Variance)
 ## RSI calculation (Relative Strength index):
 
 The relative strength index (RSI) is a technical indicator used in the analysis of financial markets. It is intended to chart the current and historical strength or weakness of a stock or market based on the closing prices of a recent trading period.
-Let’s understand how to calculate and graph the RSI indicator now. While you can easily calculate the RSI indicator value with the python code, for explanation purposes we will do it manually.
+
+````
+RSI = 100 – 100 / ( 1 + RS )
+RS = Relative Strength = AvgU / AvgD
+AvgU = average of all up moves in the last N price bars
+AvgD = average of all down moves in the last N price bars
+N = the period of RSI
+````
+
+<details>
+
+<summary>Explanation how RSI calculated</summary>
+
+Let’s understand how to calculate and graph the RSI indicator now. While you can easily calculate the RSI indicator value with code, for explanation purposes we will do it manually.
 
 |  Date | Close (1) | Change (2) | Gain (3) | Loss (4) | Avg Gain (5) | Avg Loss (6) | RS (7) | 14-day RSI (8) |
 |:-----:|:---------:|:----------:|:--------:|:--------:|:------------:|:------------:|:------:|:--------------:|
@@ -120,12 +135,29 @@ Based on these formulae, the table is updated for the columns “Avg Gain (5)”
 
 Step 5: Calculate RS
 Now, to make matters simple, we add a column called “RS” which is simply, (Avg Gain)/(Avg Loss). Thus, for 14-05,
-
+````
 RS = (Avg Gain)/(Avg Loss) = 3.13/2.52 = 1.24.
-
+````
 In this manner, the table for the column “RS (7)” is updated. In the next step, we finally work out the RSI values.
 
 Step 6: Calculation of RSI
+````
 RSI = [100 - (100/{1+ RS})]
 For example, for (14-05),
 RSI = [100 - (100/{1+ RS})] = [100 - (100/{1+ 1.24})] = 55.37.
+````
+</details>
+
+## Stochastic oscillator:
+
+Stochastic indicator is introduced by George Lane to identify price trend direction and possible reversal points by determining the place of the current close price in the most recent price range, as in a sustainable uptrend close prices tend to the higher end of the range and to the lower end in a downtrend.
+
+````
+Stochastic = 100 x ((C – L)/(H – L));
+Signal = average of the last three Stochastic values;
+
+where:
+C – latest close price;
+L – the lowest price over a given period;
+H – the highest price over a given period.
+````

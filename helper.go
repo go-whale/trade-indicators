@@ -12,15 +12,23 @@ func roundFloat(val float64, precision uint) float64 {
 }
 
 func detectPrecision(val float64) uint {
-	var precision uint = 2
+	// WARNING: default precision needs for int prices, because division takes place in formulas
+	var defaultPrecision uint = 2
 
 	strFloat := strconv.FormatFloat(val, 'f', -1, 64)
 	posDecimal := strings.Index(strFloat, ".")
-	if len(strFloat[posDecimal+1:]) > int(precision) {
-		return uint(len(strFloat[posDecimal:]))
+
+	if posDecimal == -1 {
+		return defaultPrecision
 	}
 
-	return precision
+	decimalSignsCnt := len(strFloat[posDecimal+1:])
+	if decimalSignsCnt > int(defaultPrecision) {
+		// WARNING: added 1 to better precision for small values like 0.0000078, because calculate functions could divide small price
+		return uint(decimalSignsCnt) + 1
+	}
+
+	return defaultPrecision
 }
 
 func MinOf(vars ...float64) float64 {

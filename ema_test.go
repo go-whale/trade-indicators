@@ -2,8 +2,9 @@ package trade_indicators
 
 import (
 	"errors"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCalculateEMA(t *testing.T) {
